@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="mc_dirt">#8B5A3C</color>
+    <color name="mc_dirt_dark">#3D2513</color>
+    <color name="mc_grass">#5F8C3F</color>
+    <color name="mc_stone">#7A7A7A</color>
+    <color name="mc_stone_light">#C6A98A</color>
+    <color name="mc_stone_dark">#3D2513</color>
+    <color name="mc_text">#FFFFFF</color>
+    <color name="mc_green">#55FF55</color>
+    <color name="mc_red">#FF5555</color>
+    <color name="mc_gold">#FFAA00</color>
+    <color name="mc_black">#000000</color>
+</resources>
