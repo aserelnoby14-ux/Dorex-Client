@@ -1,0 +1,44 @@
+name: Build Dorex Client APK
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Install zip utilities
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y zip unzip
+
+      - name: Show Android SDK
+        run: |
+          echo "ANDROID_HOME=$ANDROID_HOME"
+          echo "ANDROID_SDK_ROOT=$ANDROID_SDK_ROOT"
+          ls "$ANDROID_HOME/build-tools" || true
+          ls "$ANDROID_HOME/platforms" || true
+
+      - name: Build APK
+        run: |
+          chmod +x build.sh
+          ./build.sh
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dorex-client-apk
+          path: build/dorex-client-signed.apk
+          retention-days: 30
